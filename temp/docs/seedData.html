@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RTLS Seed Data</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <script src="https://unpkg.com/react@latest/umd/react.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@mui/material@latest/umd/material-ui.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js" crossorigin="anonymous"></script>
+    <!-- Fonts to support Material Design -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Icons to support Material Design -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <style>
+        pre span {
+            color: #00000099;
+        }
+    </style>
+  </head>
+  <body style="background-color: #f9f9f9;">
+    <div id="root"></div>
+    <script src="seedData.js"></script>
+    <script type="text/babel">
+const {
+  colors,
+  CssBaseline,
+  Typography,
+  Container,
+  Box,
+  Accordion, AccordionSummary, AccordionDetails, ExpandMoreIcon,
+  Table, TableHead, TableBody, TableRow, TableCell,
+} = MaterialUI;
+
+function SeedDataList() {
+  return (
+    <Box sx={{mt: 3}}>
+      <Accordion>
+        <AccordionSummary>
+            <Typography>EnumerationType</Typography>
+        </AccordionSummary>
+        <AccordionDetails sx={{p: 0}}>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>enumTypeId (PK)</TableCell>
+                  <TableCell>description</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {EnumerationType.map((item,index) => (
+                  <TableRow key={index}>
+                    <TableCell>{item.enumTypeId}</TableCell>
+                    <TableCell>{item.description}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+        </AccordionDetails>
+      </Accordion>   
+      <Accordion>
+        <AccordionSummary>
+            <Typography>Enumeration</Typography>
+        </AccordionSummary>
+        <AccordionDetails sx={{p: 0}}>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>enumId (PK)</TableCell>
+                  <TableCell>description</TableCell>
+                  <TableCell>enumTypeId</TableCell>
+                  <TableCell>parentEnumId</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {Enumeration.map((item,index) => (
+                  <TableRow key={index}>
+                    <TableCell>{item.enumId}</TableCell>
+                    <TableCell>{item.description}</TableCell>
+                    <TableCell>{item.enumTypeId}</TableCell>
+                    <TableCell>{item.parentEnumId}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+        </AccordionDetails>
+      </Accordion>  
+    </Box>
+  );
+}
+
+function App() {
+  return (
+    <Container >
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1">
+          Seed Data
+        </Typography>
+        <Typography color="textSecondary" gutterBottom>
+          RTLS MVP Documentations
+        </Typography>
+        <SeedDataList />
+      </Box>
+    </Container>
+  );
+}
+
+ReactDOM.render(
+    <App />,
+    document.querySelector('#root'),
+);
+    </script>
+  </body>
+</html>

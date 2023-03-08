@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h1>Hey There</h1>
+{{ data.name }}
+
+{% for item in data %}
+    {{ item }}
+    <p>{{ item.name }}</p>
+    <p>{{ item.color }}</p>
+    <p>{{ item.brand }}</p>
+    <p>{{ item.assetID }}</p>
+    <p>{{ item.status }}</p>
+    <p>{{ item.type }}</p>
+
+
+
+{% endfor %}
+
+</body>
+</html>

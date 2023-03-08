@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IKCO Service</title>
+</head>
+<body>
+<div style="padding: 25px; background-color: #a19775; border-radius: 25px">
+    <details open style="font-size: 22px;">
+        <summary>HTTP Services</summary>
+
+        <div style="padding: 10px; background-color: #4b8bff; border-radius: 25px; margin-top: 10px;">
+            <details  style="font-size: 20px">
+                <summary>url: /cargoHistory</summary>
+                <p>inputs: -</p>
+                <p>outputs: [ <br> {'AssetId' , 'cargoCount'}<br> ]</p>
+            </details>
+        </div>
+
+
+        <div style="padding: 10px; background-color: #4b8bff; border-radius: 25px; margin-top: 10px;">
+            <details  style="font-size: 20px">
+                <summary>url: /cargoHistory/custom (POST)</summary>
+                <p><u>inputs: </u> id , timestamp , fromTimestamp , tillTimestamp</p>
+                <p>**Note : Either 'timestamp' or '(fromTimestamp,tillTimestamp)' as input. None is OK but both is not valid.**</p>
+                <p>##if 'id' is passed:</p>
+                <p>&nbsp &nbsp &nbsp &nbsp<u>outputs:</u> { 'cargoCount' }</p>
+                <p>##else if 'id' is not passed:</p>
+                <p>&nbsp &nbsp &nbsp &nbsp<u>outputs:</u> [ <br>&nbsp &nbsp &nbsp &nbsp {'assetId' , 'cargoCount'}<br>&nbsp &nbsp &nbsp &nbsp ]</p>
+            </details>
+        </div>
+
+
+
+
+
+        <div style="padding: 10px; background-color: #59ff53; border-radius: 25px; margin-top: 10px;">
+            <details style="font-size: 20px">
+                <summary>url: /loadTime</summary>
+                <p><u>inputs:</u> -</p>
+                <p>outputs: [ <br> {'assetId' , 'underLoadTime'}<br> ]</p>
+            </details>
+        </div>
+
+        <div style="padding: 10px; background-color: #59ff53; border-radius: 25px; margin-top: 10px;">
+            <details style="font-size: 20px">
+                <summary>url: /loadTime/custom</summary>
+                <p><u>inputs:</u> id</p>
+                <p><u>outputs:</u> { 'avgUnderLoadTime' }</p>
+            </details>
+        </div>
+
+        <div style="padding: 10px; background-color: #fffc53; border-radius: 25px; margin-top: 10px;">
+            <details style="font-size: 20px">
+                <summary>url: /trucksStatus</summary>
+                <p>inputs: -</p>
+                <p>outputs: [ <br> {'id' : All Fileds of Vehicle Table}<br> ]</p>
+            </details>
+        </div>
+    </details>
+</div>
+<div style="padding: 25px; background-color: #a19775;; border-radius: 25px; margin-top: 15px;">
+    <details open style="font-size: 22px; ">
+        <summary>Socket Channels</summary>
+
+        <div style="padding: 10px; background-color: #fd6262; border-radius: 25px; margin-top: 10px;">
+            <details  style="font-size: 20px">
+                <summary>url: /liveData</summary>
+                <p>data : {<br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp machineID : { position , speed }, <br>&nbsp &nbsp &nbsp &nbsp &nbsp }</p>
+            </details>
+        </div>
+
+        <div style="padding: 10px; background-color: #ff9745; border-radius: 25px; margin-top: 10px;">
+            <details  style="font-size: 20px">
+                <summary>url: /notifications</summary>
+                <p>data : {<br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp stopped : [ ( machineID , name ) ] , <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    outRanged : [ ( machineID , name ) ] , <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    lineLocked : [ ( machineID , name ) ], <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    lineFreed : [ ( machineID , name ) ], <br>&nbsp &nbsp &nbsp &nbsp &nbsp }
+                    </p>
+            </details>
+        </div>
+
+
+    </details>
+</div>
+
+
+</body>
+</html>
+
